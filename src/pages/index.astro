@@ -1,17 +1,70 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+	<main>
+		<p>
+			Estas ante la mejor seleccion de recetas del mundo. Descubre platos
+			fáciles, rápidos y explicados paso a paso para que cualquiera pueda
+			cocinar sin complicaciones. Desde entrantes hasta postres, aquí
+			encontrarás ideas deliciosas para sorprender a familiares y amigos.
+		</p>
+		<section class="centro">
+			<div>
+				<img
+					src="../../src/assets/principal.png";
+					alt="foto de mesa elegante con asado y vino"
+				/>
+			</div>
+			<aside>
+				<h2>Destacados</h2>
+				<div class="card">
+					<h3>titulo</h3>
+					<img src="" alt="receta" />
+					<a href="#">Ir...</a>
+				</div>
+				<div class="card">
+					<h3>titulo</h3>
+					<img src="#" alt="receta" />
+					<a href="#">Ir...</a>
+				</div>
+			</aside>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.centro {
+		display: flex;
+		gap: 20px;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		align-items: stretch;
+		
+	}
+	aside {
+		flex: 1 1 250px;
+		background-color: var(--color-acento);
+		min-height: 300px;
+	}
+	.centro div {
+		flex: 2 1 500px;
+	}
+	.centro div img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+	p {
+		font-size: 18px;
+		margin-left: 10%;
+		margin-right: 10%;
+		text-align: center;
+		padding-top: 7px;
+	}
+
+	main {
+		margin-bottom: 10px;
+	}
+</style>
