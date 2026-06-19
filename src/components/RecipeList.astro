@@ -1,5 +1,6 @@
 ---
 import "../styles/variables.css";
+import "../styles/recipes.css";
 
 const respuesta = await fetch("https://dummyjson.com/recipes");
 
@@ -22,59 +23,10 @@ const resumenRecetas = recetas.map((receta) => ({
                 <div class="fondo">
                     <h3>{reci.nombre}</h3>
                     <p>{reci.tiempo} min</p>
-                    <span>{reci.dificultad}</span>
                 </div>
+                    <span>{reci.dificultad}</span>
+                
             </div>
         ))
     }
 </div>
-
-<style>
-    .cards {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .card {
-        width: 30%;
-        height: 200px;
-        margin: 15px;
-        border-radius: 15px;
-        overflow: hidden;
-
-        background-size: cover;
-        background-position: center;
-        cursor: pointer;
-        transition: all 300ms ease-in-out;
-    }
-    .card:hover {
-        transform: scale(1.02);
-        overflow: hidden;
-    }
-    .fondo {
-        background-color: rgba(0, 0, 0, 0.637);
-        width: 45%;
-        height: 205px;
-        margin-top: -75px;
-        color: var(--color-principal);
-        padding: 35px 0 10px 5px;
-        border-radius: 0 150px 150px 0;
-        padding-left: 15px;
-        font-weight: bold;
-        opacity: 0;
-
-        transition: opacity 0.5s ease-in-out;
-    }
-
-    .card:hover .fondo {
-        opacity: 1;
-
-        background-color: #1b4332d2;
-        color: var(--color-fondo);
-    }
-
-    h3 {
-        padding-top: 35px;
-        line-height: 60px;
-    }
-</style>

@@ -1,0 +1,89 @@
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .card {
+        width: 30%;
+        height: 200px;
+        margin: 15px;
+        border-radius: 15px;
+        overflow: hidden;
+
+        background-size: cover;
+        background-position: center;
+        cursor: pointer;
+        transition: all 300ms ease-in-out;
+        position: relative;
+        overflow: hidden;
+    }
+    .card:hover {
+        transform: scale(1.02);
+        
+    }
+    .fondo {
+        background-color: #1b4332d2;
+        color: var(--color-fondo);
+        width: 45%;
+        height: 205px;
+        margin-top: -75px;
+        padding: 35px 0 10px 5px;
+        border-radius: 0 150px 150px 0;
+        padding-left: 15px;
+        font-weight: bold;
+        opacity: 0;
+
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .card:hover .fondo {
+        opacity: 1;
+
+    }
+
+    h3 {
+        padding-top: 35px;
+        line-height: 60px;
+    }
+
+    span{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        border-radius: 100%; 
+        background-color: #f4a361dc;
+        padding: 10px;
+        color: var( --color-texto);
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    @media screen and (max-width: 1170px) {
+        .fondo {
+            border-radius: 10px;
+            height: 250px;
+            width: 55%;
+            opacity:1;
+        }
+    }
+
+    @media screen and (max-width: 905px) {
+        span{
+            font-size: 15px;
+            top: 2px;
+            right: 2px;
+
+        }
+        h3,p{
+            font-size: 18px;
+            line-height: 25px;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+
+/*mirar si los mediaquery del nav van en el Header*/
+
+    }
+

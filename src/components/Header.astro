@@ -21,6 +21,8 @@
     *{
         margin: 0 auto;
         font-family: var(--fuente-principal);
+        text-decoration: none;
+        list-style: none;
     }
 
     header{
@@ -35,22 +37,41 @@
     }
 
     h1{
-        margin-left: 70px;
+        margin-left: 80px;
         font-size: 70px;
         color: var(--color-fondo);
     }
     ul{
         display: flex;
+        margin-top: 20px;
+       
     }
     ul li{
-        background-color: rgb(250, 250, 41);
-        border-radius:  79% 7%;
+        background-color: var(--color-acento);
         font-weight: bold;
         font-size: 20px;
-        padding: 30px;
+        padding: 15px;
+        margin:5px;
         cursor: pointer;
-        color: var(--color-texto);
+         transition: all 400ms ease-in-out;
         
         }
+        ul li:hover{
+            background-color: var(--color-texto);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+        }
+        ul li a{
+            color: var(--color-texto);
+        }
+        ul li:hover a{
+            color: var(--color-acento);
+        }
+        a:focus-visible {
+            outline: 2px solid var(--color-acento);
+            outline: none;
+            border-bottom: 2px solid var(--color-acento);
+        }
+
 
 </style>
