@@ -1,5 +1,4 @@
 ---
-
 import "../styles/variables.css";
 
 const respuesta = await fetch("https://dummyjson.com/recipes");
@@ -8,68 +7,74 @@ const data = await respuesta.json();
 
 const recetas = data.recipes;
 
-const resumenRecetas = recetas.map(receta => ({
+const resumenRecetas = recetas.map((receta) => ({
     nombre: receta.name,
     tiempo: receta.prepTimeMinutes,
     dificultad: receta.difficulty,
-    imagen: receta.image
-    })
-);
-
+    imagen: receta.image,
+}));
 ---
 
-
-
-
 <div class="cards">
-    
-    {resumenRecetas.map(reci => (
-        <div class="card"  style={`background-image: url(${reci.imagen});`}>
-            
-                <h3>{reci.nombre}</h3>
-                <p>{reci.tiempo} min</p>
-                <span>{reci.dificultad}</span>
-                
-            
-        </div>
-    ))}
-
+    {
+        resumenRecetas.map((reci) => (
+            <div class="card" style={`background-image: url(${reci.imagen});`}>
+                <div class="fondo">
+                    <h3>{reci.nombre}</h3>
+                    <p>{reci.tiempo} min</p>
+                    <span>{reci.dificultad}</span>
+                </div>
+            </div>
+        ))
+    }
 </div>
 
-
-
 <style>
-    .cards{
+    .cards {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-
     }
-    .card{
+    .card {
         width: 30%;
         height: 200px;
         margin: 15px;
         border-radius: 15px;
-        padding: 5px;
         overflow: hidden;
-        text-align: center;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
 
         background-size: cover;
         background-position: center;
         cursor: pointer;
-        
+        transition: all 300ms ease-in-out;
     }
-    h3,p,span{
-        display: inline;
-        padding: 5px;
-        background-color:#f4a361cb;
-        color: var(--color-texto);
-        font-weight: bolder;
-        font-size: 20px;
-        margin-top: 0;
+    .card:hover {
+        transform: scale(1.02);
+        overflow: hidden;
     }
-    
+    .fondo {
+        background-color: rgba(0, 0, 0, 0.637);
+        width: 45%;
+        height: 205px;
+        margin-top: -75px;
+        color: var(--color-principal);
+        padding: 35px 0 10px 5px;
+        border-radius: 0 150px 150px 0;
+        padding-left: 15px;
+        font-weight: bold;
+        opacity: 0;
+
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .card:hover .fondo {
+        opacity: 1;
+
+        background-color: #1b4332d2;
+        color: var(--color-fondo);
+    }
+
+    h3 {
+        padding-top: 35px;
+        line-height: 60px;
+    }
 </style>

@@ -6,7 +6,14 @@
 
 <header>
     <h1 id="tituloWeb">Recetas para dummies</h1>
-    <button><a href="/recetas">Recetas</a></button>
+    <nav>
+        <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/recetas">Recetas</a></li>
+            <li><a href="">Recetas italianas</a></li>
+            <li><a href="">Contacto</a></li>
+        </ul>
+    </nav>
 </header>
 
 <style>
@@ -32,16 +39,18 @@
         font-size: 70px;
         color: var(--color-fondo);
     }
-
-    button{
+    ul{
+        display: flex;
+    }
+    ul li{
         background-color: rgb(250, 250, 41);
         border-radius:  79% 7%;
         font-weight: bold;
         font-size: 20px;
-        padding: 40px;
+        padding: 30px;
         cursor: pointer;
         color: var(--color-texto);
-        margin-right: 3%;
+        
         }
 
 </style>
