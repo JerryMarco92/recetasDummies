@@ -2,70 +2,71 @@
     .cards {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-evenly;
     }
     .card {
-        width: 30%;
+        width: 26%;
         height: 200px;
-        margin: 15px;
-        border-radius: 15px;
-        overflow: hidden;
+        margin: 70px;
+        border-radius: 0 15px 15px 10%;
 
         background-size: cover;
         background-position: center;
         cursor: pointer;
-        transition: all 300ms ease-in-out;
-        position: relative;
-        overflow: hidden;
+
     }
-    .card:hover {
-        transform: scale(1.02);
-        
-    }
+
     .fondo {
-        background-color: #1b4332d2;
+        background-color: #1b4332e8;
         color: var(--color-fondo);
-        width: 45%;
+        width: 65%;
         height: 205px;
-        margin-top: -75px;
+        margin-top: -25px;
         padding: 35px 0 10px 5px;
-        border-radius: 0 150px 150px 0;
+        border-radius: 10%;
         padding-left: 15px;
         font-weight: bold;
-        opacity: 0;
-
-        transition: opacity 0.5s ease-in-out;
+        transition: transform 600ms ease-in-out;
+        
+    }
+        
+    
+    .card:hover .fondo{
+        transform: translateX(-210px);
     }
 
-    .card:hover .fondo {
-        opacity: 1;
-
-    }
 
     h3 {
-        padding-top: 35px;
-        line-height: 60px;
+        padding-top: 30px;
+    
     }
 
     span{
-        position: absolute;
-        top: 15px;
-        right: 15px;
         border-radius: 100%; 
-        background-color: #f4a361dc;
+        background-color: var(--color-acento);
         padding: 10px;
         color: var( --color-texto);
         font-weight: bold;
         font-size: 18px;
     }
 
+     @media screen and (max-width: 1350px) {
+        .card:hover .fondo{
+        transform: translateX(-140px);
+        }
+     }
+
+
     @media screen and (max-width: 1170px) {
         .fondo {
             border-radius: 10px;
             height: 250px;
             width: 55%;
-            opacity:1;
         }
+
+        .card:hover .fondo{
+        transform: translateX(-140px);
+    }
     }
 
     @media screen and (max-width: 905px) {
@@ -76,8 +77,21 @@
 
         }
         h3,p{
-            font-size: 18px;
-            line-height: 25px;
+        
+            font-size: 15px;
+            line-height: 9px;
+        }
+        
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:space-evenly;
+        }
+        .fondo{
+            transform: translatey(180px);
+            width: 100%;
+            height: 60%;
+            
         }
     }
 
