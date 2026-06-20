@@ -1,28 +1,15 @@
 ---
-import "../styles/variables.css";
+
 import "../styles/recipes.css";
 
-const respuesta = await fetch("https://dummyjson.com/recipes");
+import { getRecipes } from "../data/recipes";
 
-const data = await respuesta.json();
-
-const recetas = data.recipes;
-
-const resumenRecetas = recetas.map((receta) => ({
-    nombre: receta.name,
-    tiempo: receta.prepTimeMinutes,
-    dificultad: receta.difficulty,
-    imagen: receta.image,
-    tipo: receta.cuisine,
-    id: receta.id,
-    ingredientes: receta.ingredients,
-    instructiones: receta.instructions
-}));
+const recetas = await getRecipes();
 ---
 
 <div class="cards">
     {
-        resumenRecetas.map((reci) => (
+        recetas.map((reci) => (
             
 
                 <div class="card" style={`background-image: url(${reci.imagen});`}>
@@ -39,3 +26,5 @@ const resumenRecetas = recetas.map((receta) => ({
         ))
     }
 </div>
+
+
