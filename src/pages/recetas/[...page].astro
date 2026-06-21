@@ -1,0 +1,57 @@
+---
+import RecipeList from "../../components/RecipeList.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getRecipes } from "../../data/recipes.js";
+
+export async function getStaticPaths({ paginate }) {
+    const recetas = await getRecipes();
+
+    return paginate(recetas,{
+        pageSize: 10
+    });
+}
+
+const { page } = Astro.props;
+
+
+
+
+
+
+console.log("Página actual:", page.currentPage);
+console.log("Recetas en esta página:", page.data.length);
+console.log("Total páginas:", page.lastPage);
+---
+
+<Layout >
+
+<RecipeList recetas={page.data} />
+
+<nav>
+  {page.url.prev && <a href={page.url.prev}>Previous < </a>}
+
+  <span>
+    Page {page.currentPage} / {page.lastPage}
+  </span>
+
+  {page.url.next && <a href={page.url.next}> >Next </a>}
+</nav>
+
+
+</Layout>
+
+<style>
+
+nav a{
+    text-decoration: none;
+    color: var(--color-texto);
+    font-size: 20px;
+}
+nav:hover a{
+background-color: var(--color-secundario);
+}
+
+
+</style>
+
+

@@ -1,5 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import RecipeList from "../components/RecipeList.astro";
+
+import { getRecipes } from "../data/recipes";
+
+const recetas = await getRecipes();
+
+const destacada = recetas[6];
 ---
 
 <Layout>
@@ -18,17 +25,28 @@ import Layout from "../layouts/Layout.astro";
 				/>
 			</div>
 			<aside>
-				<h2>Destacados</h2>
-				<div class="card">
-					<h3>titulo</h3>
-					<img src="" alt="receta" />
-					<a href="#">Ir...</a>
+				<h2>Receta destacada de la semana </h2>
+				<div class="receta-destacada">
+					<div class="card-img">
+						<img src={destacada.imagen} alt={destacada.nombre} />
+
+						<div class="overlay">
+							<h3>{destacada.nombre}</h3>
+						</div>
+					</div>
+					<div id= "especificaciones">
+						<p>{destacada.tiempo} min</p>
+						<p>{destacada.tipo}</p>
+						<p>{destacada.dificultad}</p>
+						<p>Ingredients: {destacada.ingredientes}</p>
+						<a href="#">Ver mas...</a>
+					</div>
 				</div>
-				<div class="card">
-					<h3>titulo</h3>
-					<img src="#" alt="receta" />
-					<a href="#">Ir...</a>
-				</div>
+
+
+
+
+
 			</aside>
 		</section>
 	</main>
@@ -44,27 +62,121 @@ import Layout from "../layouts/Layout.astro";
 		
 	}
 	aside {
-		flex: 1 1 250px;
-		background-color: var(--color-acento);
+		flex: 1;
+  		min-width: 280px;
+		background-color: #E8FEC0;
 		min-height: 300px;
+		margin-top:-75px;
 	}
 	.centro div {
-		flex: 2 1 500px;
+		flex: 2;
 	}
 	.centro div img {
 		width: 100%;
 		height: auto;
 		display: block;
 	}
-	p {
+	main p {
 		font-size: 18px;
-		margin-left: 10%;
-		margin-right: 10%;
-		text-align: center;
+		margin-right: 30%;
+		max-width: 65%;
 		padding-top: 7px;
 	}
 
 	main {
-		margin-bottom: 10px;
+		
+		overflow:hidden;
 	}
+
+	aside h2, h3{
+		text-align: center;
+		font-size: 25px;
+		color: #175237;
+		font-weight: bold;
+	}
+	
+	.card-img {
+		
+		
+		overflow: hidden;
+		position: relative; /* para subir el nombre */
+	}
+
+	.card-img img {
+		
+		width: 100%;
+		display: block;
+		margin: 0;
+  		padding: 0;
+		
+	}
+
+	.overlay {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		padding: 10px;
+		color: white;
+
+  		background: linear-gradient(
+			to top,
+			#f4a361,
+			transparent
+		);
+	}
+	#especificaciones{
+		padding-left: 30px;
+		color: #175237;
+		font-weight: bold;
+		height: 100px;
+		
+		
+	}
+
+	.overlay h3 {
+	margin: 0;
+	}
+
+	.receta-destacada{
+		background: #f4a361;
+		width: 90%;
+		border-radius: 16px 16px 16px 16px;
+		line-height:20px;
+		margin: auto;
+		height: 90%;
+		border: 2px solid #175238d2;
+		overflow: hidden;
+		margin-bottom: 4px;
+	}
+
+	@media (max-width: 1030px) {
+		.centro {
+			flex-direction: column;
+		}
+
+		.centro aside {
+			min-width: 100%;
+		}
+
+		main p {
+		text-align: center;
+		margin-right: 0; 
+		max-width: 100%; 
+		padding:10px;
+		}
+	}
+
+	media (max-width: 550px) {
+		
+
+
+
+
+	}
+
+
+
+
+
 </style>

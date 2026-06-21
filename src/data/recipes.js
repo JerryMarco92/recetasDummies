@@ -12,8 +12,9 @@ export async function getRecipes() {
         tipo: receta.cuisine,
         id: receta.id,
         ingredientes: receta.ingredients,
-        instructiones: receta.instructions
+        instrucciones: receta.instructions
 }));
 
 return resumenRecetas;
 }
+

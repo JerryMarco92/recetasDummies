@@ -6,6 +6,7 @@
 
 <header>
     <h1 id="tituloWeb">Recetas para dummies</h1>
+
     <nav>
         <ul>
             <li><a href="/">Inicio</a></li>
@@ -72,6 +73,41 @@
             outline: none;
             color: white;
         }
+
+
+
+
+
+        @media (max-width: 550px) {
+
+        header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        #tituloWeb {
+            font-size: 1.9rem;
+        }
+
+
+        nav ul {
+            flex-direction: column;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        nav ul li {
+            width: 75%;
+            text-align: center;
+        }
+
+        ul li{
+        
+        font-size: 17px;
+        padding: 10px;
+        }
+        
+}
 
 
 </style>
