@@ -1,13 +1,17 @@
 ---
-import Italianas from "../components/italianasList.astro";
 import Layout from "../layouts/Layout.astro";
+import RecipeList from "../components/RecipeList.astro";
+import { getRecipes } from "../data/recipes";
 
+const recetas = await getRecipes();
+
+const recetasItalianas = recetas.filter(
+  (receta) => receta.tipo === "Italian"
+);
 ---
 
-<Layout >
+<Layout title="Recetas italianas">
 
-<Italianas />
+  <RecipeList recetas={recetasItalianas} mostrarTipo={false} />
 
 </Layout>
-
-

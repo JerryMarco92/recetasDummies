@@ -8,9 +8,10 @@ import { getRecipes } from "../data/recipes";
 const recetas = await getRecipes();
 
 const destacada = recetas[6];
----
 
-<Layout>
+import imagenPortada from "../assets/principal.png";
+---
+<Layout title="Inicio">
 	<main>
 		<p>
 			Estas ante la mejor seleccion de recetas del mundo. Descubre platos
@@ -20,10 +21,7 @@ const destacada = recetas[6];
 		</p>
 		<section class="centro">
 			<div id="imgPrincipal">
-				<img
-					src="../../src/assets/principal.png";
-					alt="foto de mesa elegante con asado y vino"
-				/>
+				<img src={imagenPortada.src} alt="foto de mesa elegante con asado y vino" />
 			</div>
 			<aside>
 				<h2>Receta destacada de la semana </h2>
@@ -40,7 +38,7 @@ const destacada = recetas[6];
 						<p>{destacada.tipo}</p>
 						<p>{destacada.dificultad}</p>
 						<p>Ingredients: {destacada.ingredientes}</p>
-						<a href="#">Ver mas...</a>
+						<a href={`/receta/${destacada.id}`}>Ver más...</a>
 					</div>
 				</div>
 

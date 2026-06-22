@@ -1,7 +1,10 @@
 ---
 import "../styles/recipes.css";
 
-const { recetas } = Astro.props;
+const {
+  recetas,
+  mostrarTipo = true
+} = Astro.props;
 ---
 
 <div class="cards">
@@ -14,7 +17,7 @@ const { recetas } = Astro.props;
                         <span>{reci.dificultad}</span>
                         <h3>{reci.nombre}</h3>
                         <p>{reci.tiempo} min</p>
-                        <p>{reci.tipo}</p>
+                        {mostrarTipo ? <p>{reci.tipo}</p> : null}
                         
                         <a href={`/receta/${reci.id}`} class="ver-mas">
                         Ver receta
