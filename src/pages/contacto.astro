@@ -11,21 +11,87 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout>
 
+<div id="caja-form">
 
-<form action="/enviar-datos" method="post">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre_usuario" required>
+    <form action="/enviar-datos" method="post" class="contacto-form">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre_usuario" required>
 
-    <label for="correo">Correo Electrónico:</label>
-    <input type="email" id="correo" name="correo_usuario" required>
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" name="correo_usuario" required>
 
-    <label for="mensaje">Escriba su mensaje:</label>
-    <textarea name="mensaje" ></textarea>
+        <label for="mensaje">Escriba su mensaje:</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
 
-    <button type="submit">Enviar</button>
-</form>
+        <button type="submit">Enviar</button>
+    </form>
 
-
-
-
+</div>
 </Layout>
+
+
+<style>
+
+#caja-form {
+    min-height: 60vh;
+    margin: 55px 0;
+    box-sizing: border-box;
+}
+
+
+.contacto-form {
+    
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contacto-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.contacto-form input,
+.contacto-form textarea {
+    width: 95%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.contacto-form input:focus,
+.contacto-form textarea:focus {
+    outline: none;
+    border-color: #0077ff;
+}
+
+.contacto-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #0077ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contacto-form button:hover {
+    background-color: #005fd1;
+}
+
+@media (max-width: 600px) {
+    .contacto-form {
+        padding: 20px 15px;
+    }
+}
+
+
+</style>
