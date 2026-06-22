@@ -8,13 +8,17 @@ const { recetas } = Astro.props;
     {
         recetas.map((reci) => (
             
-
+            
                 <div class="card" style={`background-image: url(${reci.imagen});`}>
                     <div class="fondo">
                         <span>{reci.dificultad}</span>
                         <h3>{reci.nombre}</h3>
                         <p>{reci.tiempo} min</p>
                         <p>{reci.tipo}</p>
+                        
+                        <a href={`/receta/${reci.id}`} class="ver-mas">
+                        Ver receta
+                        </a>
                     </div>
                      
                     
@@ -25,3 +29,12 @@ const { recetas } = Astro.props;
 </div>
 
 
+<style>
+
+a {
+  list-style:none;
+  text-decoration: none;
+  
+}
+
+</style>

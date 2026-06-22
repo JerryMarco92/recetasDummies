@@ -1,0 +1,150 @@
+---
+
+import Layout from "../../layouts/Layout.astro";
+
+import { getRecipes } from "../../data/recipes.js";
+
+export async function getStaticPaths() {
+  const recetas = await getRecipes();
+
+  return recetas.map((receta) => ({
+    params: {
+      id: receta.id.toString(),
+    },
+    props: {
+      receta,
+    },
+  }));
+}
+
+const { receta } = Astro.props;
+---
+
+<Layout>
+
+<div class="receta">
+
+  <div class="receta-top">
+    <span>{receta.dificultad}</span>
+    <h1>{receta.nombre}</h1>
+    <p>Tiempo: {receta.tiempo} min</p>
+    <p>Tipo: {receta.tipo}</p>
+  </div>
+
+  
+  <div class="receta-detalles">
+
+    <img class="receta-img" src={receta.imagen} alt={receta.nombre} />
+    <h3>Ingredientes</h3>
+    <ul>
+      {
+        receta.ingredientes.map(function (ingrediente) {
+          return <li>{ingrediente}</li>;
+        })
+      }
+    </ul>
+  
+
+    <h3>Preparación</h3>
+    <ol>
+      {
+        receta.instrucciones.map(function (paso) {
+          return <li>{paso}</li>;
+        })
+      }
+    </ol>
+  </div>
+
+</div>
+
+</Layout>
+
+<style>
+
+.receta {
+  width: 70%;
+  max-width: 1000px;
+  margin: 60px auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  background-color: var(--color-fondo);
+}
+
+/* PARTE SUPERIOR */
+.receta-top {
+  background-color: #1b4332e8;
+  color: var(--color-fondo);
+  padding: 30px;
+}
+
+.receta-top h1 {
+  margin: 10px 0;
+}
+
+.receta-top span {
+  display: inline-block;
+  background-color: var(--color-acento);
+  color: var(--color-texto);
+  padding: 8px 12px;
+  border-radius: 50px;
+  font-weight: bold;
+}
+
+/* BLOQUE DETALLES */
+.receta-detalles {
+  padding: 30px;
+}
+
+/* IMAGEN PEQUEÑA */
+.receta-img {
+  display: block;
+  max-width: 210px;
+  max-height: 210px;
+  object-fit: cover;
+  border-radius: 12px;
+
+  float: right;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+
+/* LISTAS */
+.receta-detalles ul,
+.receta-detalles ol {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.receta-detalles h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 900px) {
+
+  .receta {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .receta-top,
+  .receta-detalles {
+    padding: 20px;
+  }
+
+  /* IMPORTANTE: la imagen deja de flotar */
+  .receta-img {
+    float: none;
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    height: 220px;
+    margin: 0 0 20px 0;
+  }
+}
+</style>

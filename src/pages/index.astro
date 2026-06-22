@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import RecipeList from "../components/RecipeList.astro";
+import global from "../styles/global.css";
 
 import { getRecipes } from "../data/recipes";
 
@@ -18,7 +19,7 @@ const destacada = recetas[6];
 			encontrarás ideas deliciosas para sorprender a familiares y amigos.
 		</p>
 		<section class="centro">
-			<div>
+			<div id="imgPrincipal">
 				<img
 					src="../../src/assets/principal.png";
 					alt="foto de mesa elegante con asado y vino"
@@ -53,129 +54,165 @@ const destacada = recetas[6];
 </Layout>
 
 <style>
-	.centro {
-		display: flex;
-		gap: 20px;
-		flex-wrap: wrap;
-		align-items: flex-start;
-		align-items: stretch;
-		
-	}
-	aside {
-		flex: 1;
-  		min-width: 280px;
-		background-color: #E8FEC0;
-		min-height: 300px;
-		margin-top:-75px;
-	}
-	.centro div {
-		flex: 2;
-	}
-	.centro div img {
-		width: 100%;
-		height: auto;
-		display: block;
-	}
-	main p {
-		font-size: 18px;
-		margin-right: 30%;
-		max-width: 65%;
-		padding-top: 7px;
-	}
+
 
 	main {
-		
-		overflow:hidden;
+		max-width: 1400px;
+		margin: 0 auto;
+		padding: 1rem 2rem;
 	}
 
-	aside h2, h3{
-		text-align: center;
-		font-size: 25px;
-		color: #175237;
-		font-weight: bold;
+	/* Texto superior */
+
+	main > p {
+		width: min(800px, 80%);
+		text-align: end;
+		font-size: 1.1rem;
+		line-height: 1.6;
 	}
-	
-	.card-img {
-		
-		
+
+	/* Contenedor principal */
+
+	.centro {
+		display: flex;
+		gap: 2rem;
+		align-items: flex-start;
+	}
+
+	/* Imagen principal */
+
+	.centro > div {
+		flex: 1;
+	}
+
+	.centro > div img {
+		width: 100%;
+		max-height: 70vh;
+		object-fit: cover;
+		display: block;
+		border-radius: 16px;
+	}
+
+
+	/* Aside */
+
+	aside {
+		width: 340px;
+		flex-shrink: 0;
+	}
+
+	/* Título */
+
+	aside h2 {
+		text-align: center;
+		margin-bottom: 1rem;
+		color: #175237;
+	}
+
+	/* Card */
+
+	.receta-destacada {
+		background: #f4a361;
+		border-radius: 16px;
 		overflow: hidden;
-		position: relative; /* para subir el nombre */
+		border: 2px solid #175238d2;
+		display: flex;
+		flex-direction: column;
+	}
+
+	/* Imagen de la receta */
+
+	.card-img {
+		position: relative;
+		height: 220px;
 	}
 
 	.card-img img {
-		
 		width: 100%;
-		display: block;
-		margin: 0;
-  		padding: 0;
-		
+		height: 100%;
+		object-fit: cover;
 	}
+
+	/* Nombre sobre imagen */
 
 	.overlay {
 		position: absolute;
 		bottom: 0;
 		left: 0;
-		width: 100%;
-		padding: 10px;
-		color: white;
+		right: 0;
 
-  		background: linear-gradient(
+		padding: 1.5rem;
+
+		background: linear-gradient(
 			to top,
 			#f4a361,
 			transparent
 		);
 	}
-	#especificaciones{
-		padding-left: 30px;
-		color: #175237;
-		font-weight: bold;
-		height: 100px;
-		
-		
-	}
 
 	.overlay h3 {
-	margin: 0;
+		margin: 0;
+		color: #175237;
+		font-size: 20px;
 	}
 
-	.receta-destacada{
-		background: #f4a361;
-		width: 90%;
-		border-radius: 16px 16px 16px 16px;
-		line-height:20px;
-		margin: auto;
-		height: 90%;
-		border: 2px solid #175238d2;
-		overflow: hidden;
-		margin-bottom: 4px;
+	/* Información */
+
+	#especificaciones {
+		padding: 1.25rem;
+		color: #175237;
+		display: flex;
+		flex-direction: column;
+		gap: .75rem;
 	}
 
-	@media (max-width: 1030px) {
-		.centro {
+	#especificaciones p {
+		margin: 0;
+		line-height: 1.4;
+	}
+
+	#especificaciones a {
+		margin-top: auto;
+		font-weight: bold;
+	}
+
+	/* Responsive */
+
+
+
+
+	@media (max-width: 1250px) {
+
+	
+
+		main {
+			padding: 1rem;
+		}
+
+		main > p {
+			width: 100%;
+		}
+
+		.centro{
 			flex-direction: column;
+		
 		}
 
-		.centro aside {
-			min-width: 100%;
+		#imgPrincipal{
+			margin: auto;
 		}
 
-		main p {
-		text-align: center;
-		margin-right: 0; 
-		max-width: 100%; 
-		padding:10px;
-		}
-	}
-
-	media (max-width: 550px) {
 		
 
+		aside {
+			margin: auto;
+			width: 80%;
+		}
 
-
-
+		.card-img {
+			height: 200px;
+		}
 	}
-
-
 
 
 
