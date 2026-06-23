@@ -5,6 +5,8 @@ const {
   recetas,
   mostrarTipo = true
 } = Astro.props;
+
+import { Image } from "astro:assets";
 ---
 
 <div class="cards">
@@ -12,8 +14,12 @@ const {
         recetas.map((reci) => (
             
             
-                <div class="card" style={`background-image: url(${reci.imagen});`}>
-                    <div class="fondo">
+                <div class="card">
+                    <div class="img">
+                            <Image src={reci.imagen} alt={reci.nombre} width={400} height={250} />
+                    </div>
+
+                        <div class="fondo">
                         <span>{reci.dificultad}</span>
                         <h3>{reci.nombre}</h3>
                         <p>{reci.tiempo} min</p>
@@ -24,7 +30,7 @@ const {
                         </a>
                     </div>
                      
-                    
+    
                 </div>
             
         ))

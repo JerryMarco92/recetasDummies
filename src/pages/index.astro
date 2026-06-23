@@ -9,7 +9,9 @@ const recetas = await getRecipes();
 
 const destacada = recetas[6];
 
+
 import imagenPortada from "../assets/principal.png";
+import { Picture } from "astro:assets";
 ---
 <Layout title="Inicio">
 	<main>
@@ -21,7 +23,7 @@ import imagenPortada from "../assets/principal.png";
 		</p>
 		<section class="centro">
 			<div id="imgPrincipal">
-				<img src={imagenPortada.src} alt="foto de mesa elegante con asado y vino" />
+				<Picture src={imagenPortada} alt="foto de mesa elegante con asado y vino" formats={["avif", "webp"]} />
 			</div>
 			<aside>
 				<h2>Receta destacada de la semana </h2>
@@ -83,7 +85,7 @@ import imagenPortada from "../assets/principal.png";
 		flex: 1;
 	}
 
-	.centro > div img {
+	#imgPrincipal picture img {
 		width: 100%;
 		max-height: 70vh;
 		object-fit: cover;
@@ -104,7 +106,7 @@ import imagenPortada from "../assets/principal.png";
 	aside h2 {
 		text-align: center;
 		margin-bottom: 1rem;
-		color: #175237;
+		color: var(--color-texto);
 	}
 
 	/* Card */
@@ -150,7 +152,7 @@ import imagenPortada from "../assets/principal.png";
 
 	.overlay h3 {
 		margin: 0;
-		color: #175237;
+		color: var(--color-texto);
 		font-size: 20px;
 	}
 
@@ -158,7 +160,7 @@ import imagenPortada from "../assets/principal.png";
 
 	#especificaciones {
 		padding: 1.25rem;
-		color: #175237;
+		color: var(--color-texto);
 		display: flex;
 		flex-direction: column;
 		gap: .75rem;
